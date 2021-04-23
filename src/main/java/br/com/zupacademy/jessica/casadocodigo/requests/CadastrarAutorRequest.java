@@ -8,6 +8,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 public class CadastrarAutorRequest {
+
     @NotBlank(message = "Nome é obrigatório!")
     private String nome;
 
