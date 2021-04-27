@@ -36,8 +36,7 @@ public class Autor {
     }
 
     @Deprecated
-    public Autor() {
-    }
+    public Autor() { }
 
     public String getNome() {
         return nome;

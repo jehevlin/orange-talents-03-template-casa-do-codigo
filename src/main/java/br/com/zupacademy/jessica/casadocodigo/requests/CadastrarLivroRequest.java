@@ -1,16 +1,18 @@
 package br.com.zupacademy.jessica.casadocodigo.requests;
 
+import br.com.zupacademy.jessica.casadocodigo.models.Autor;
+import br.com.zupacademy.jessica.casadocodigo.models.Categoria;
 import br.com.zupacademy.jessica.casadocodigo.models.Livro;
 import br.com.zupacademy.jessica.casadocodigo.requests.validators.MustBeUnique;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class CadastrarLivroRequest {
 
     @NotBlank
-    @MustBeUnique(domainClass = Livro.class, fieldName = "titulo", message = "0000")
+    @MustBeUnique(domainClass = Livro.class, fieldName = "titulo", message = "Autor precisa ser único")
     private String titulo;
 
     @NotBlank
@@ -19,24 +21,24 @@ public class CadastrarLivroRequest {
 
     private String sumario;
 
-    @NotBlank
-    @Size(min = 20)
-    private Double preco;
+    @NotNull
+    @Min(20)
+    private BigDecimal preco;
+
+    @NotNull
+    @Min(100)
+    private int paginas;
 
     @NotBlank
-    @Size(min = 100)
-    private Long paginas;
-
-    @NotBlank
-    @MustBeUnique(domainClass = Livro.class, fieldName = "isbn", message = "0000")
+    @MustBeUnique(domainClass = Livro.class, fieldName = "isbn", message = "ISBN precisa ser único")
     private String isbn;
 
-    //data que vai entrar no ar precisa ser no futuro
+    @Future
     private LocalDate dataPublicacao;
 
-    private Long idCategoria;
+    private Categoria categoria;
 
-    private Long idAutor;
+    private Autor autor;
 
     public String getTitulo() { return titulo; }
 
@@ -44,19 +46,19 @@ public class CadastrarLivroRequest {
 
     public String getSumario() { return sumario; }
 
-    public Double getPreco() { return preco; }
+    public BigDecimal getPreco() { return preco; }
 
-    public Long getPaginas() { return paginas; }
+    public int getPaginas() { return paginas; }
 
     public String getIsbn() { return isbn; }
 
     public LocalDate getDataPublicacao() { return dataPublicacao; }
 
-    public Long getIdCategoria() { return idCategoria; }
+    public Categoria getCategoria() { return categoria; }
 
-    public Long getIdAutor() { return idAutor; }
+    public Autor getAutor() { return autor; }
 
     public Livro toModel() {
-        return new Livro(titulo, resumo,sumario, preco, paginas, isbn, dataPublicacao, idCategoria, idAutor);
+        return new Livro(titulo, resumo,sumario, preco, paginas, isbn, dataPublicacao, categoria, autor);
     }
 }
