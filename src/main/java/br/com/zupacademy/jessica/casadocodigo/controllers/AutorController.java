@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(path = "autor")
+@RequestMapping(path = "autores")
 public class AutorController {
 
     private final AutorRepository repository;

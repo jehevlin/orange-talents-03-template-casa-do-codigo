@@ -1,4 +1,4 @@
-package br.com.zupacademy.jessica.casadocodigo.requests;
+package br.com.zupacademy.jessica.casadocodigo.controllers.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(path = "categoria")
+@RequestMapping(path = "categorias")
 public class CategoriaController {
     private final CategoriaRepository repository;
 
